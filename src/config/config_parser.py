@@ -2,9 +2,10 @@ import os
 import yaml
 from dotenv import load_dotenv
 
-# Load .env secrets
-load_dotenv()
-
+# Load .env secrets from project root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ENV_PATH = os.path.join(BASE_DIR, ".env")
+load_dotenv(ENV_PATH)
 class Config:
     def __init__(self, config_path: str = None):
         if config_path is None:
